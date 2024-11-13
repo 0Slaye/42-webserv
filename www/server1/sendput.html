@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUT Request Example</title>
+</head>
+<body>
+    <h1>Send a PUT Request</h1>
+    
+    <button id="putButton">Send PUT Request</button>
+
+    <script>
+        document.getElementById('putButton').addEventListener('click', function() {
+            // Define the URL for the PUT request            
+            // Define the data to send in the PUT request
+            const data = {
+                id: 123,
+                name: 'New Name',
+                description: 'Updated description'
+            };
+            
+            // Send the PUT request
+            fetch('/', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)  // Convert the data to a JSON string
+            })
+            .then(response => response.json())  // Parse the JSON response
+            .then(data => {
+                console.log('Success:', data);  // Handle the response data
+                alert('PUT request successful!');
+            })
+            .catch(error => {
+                console.error('Error:', error);  // Handle any errors
+                alert('Error sending PUT request');
+            });
+        });
+    </script>
+</body>
+</html>
